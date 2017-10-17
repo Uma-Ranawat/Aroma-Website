@@ -16,8 +16,8 @@
         <!-- -----------------------------FOOTER-------------------------------- -->
         <br><br>
              
-        <div>
-            <img src="images/f4.JPG" class="responsive-img" style="margin-left: 15%;margin-right: 15%;width: 70%; height: 6em"/>
+        <!--...................DIVIDER LINE..............-->
+        <div class="divider blue z-depth-3" style="height: 1px; width: 90%; margin-left: 5%;margin-right: 5%">
         </div>
         <br/><br>
         <div>
