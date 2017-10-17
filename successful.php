@@ -9,8 +9,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Welcome User</title>
         <link rel="stylesheet" href="./css/materialize.css" />
-        <link rel="stylesheet" href="./css/materialize.min.css" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--        <link rel="stylesheet" href="./css/materialize.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
 <!--        <link href="./iconfont/material-icons.css" rel="stylesheet">-->
         <style type="text/css">
 /*    .main
@@ -53,10 +53,76 @@ and open the template in the editor.
                 First Name: <?php echo $_SESSION['FirstName'];?><br>
                 Last Name: <?php echo $_SESSION['LastName'];?><br>
                 Registered email: <?php echo $_SESSION['Email'];?><br>
-            </p>   
+            </p> 
+            <h6 class="black-text" style="font-size: 130%"><a href="#" onclick="Everify()">Click here</a> to verify your email!!</h6>
+            
+            <br/>
+            <div class="row center" style="width: 100%">
+                <div class="input-field col s10">   
+                    <div id="other-div1" style="display:none;">
+                            <input type="text" name="code" id="code" required autocomplete="off" />                                 
+                            <label for="txtcode">Enter code</label>
+                            <span id="erremail" class="red-text"></span><br>
+                            <br><input type="submit" name="submitverify" id="submitverify" class="btn red" onclick="Onclick()" value="Submit"/>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php
             include './footer.php';
-        ?>
+            ?>
+        <script>
+            function Everify()
+            {
+                 var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "logic.php?value=everify", true);
+
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        return true;
+                    }
+                }
+                xmlhttp.send();
+                
+                    document.getElementById("other-div1").style.display = 'block';
+                Materialize.toast("Verification email sent to your inbox.",4000);
+            }
+            function Onclick()
+            {
+               var xmlhttp = new XMLHttpRequest();
+               var code = $("#code").val();
+               xmlhttp.open("POST","logic.php?value=verified", true);
+               xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+               xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var response = (xmlhttp.responseText).trim();
+                        if(response == "Done")
+                            {
+                                Materialize.toast("Verification Done!!", 2000);
+                                
+                            }
+                            else if(response == "empty")
+                            {
+                                Materialize.toast("Enter code!!", 2000);
+                            }
+                            else if(response == "not done")
+                            {
+                                Materialize.toast("Not Verified", 2000);
+                            }
+                            else
+                            {
+                                Materialize.toast("Database Error", 2000);
+                            }
+                    }
+                }
+                xmlhttp.send("code=" + code);
+            }
+            
+            
+        </script>
     </body>
 </html>

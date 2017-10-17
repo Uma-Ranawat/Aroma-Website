@@ -16,10 +16,10 @@
         <!-- -----------------------------FOOTER-------------------------------- -->
         <br><br>
              
-        <!--...................DIVIDER LINE..............-->
-        <div class="divider blue z-depth-3" style="height: 1px; width: 90%; margin-left: 5%">
+        <div>
+            <img src="images/f4.JPG" class="responsive-img" style="margin-left: 15%;margin-right: 15%;width: 70%; height: 6em"/>
         </div>
-        <br/>
+        <br/><br>
         <div>
             <img src="images/footerbg.JPG" class="responsive-img" />
         </div>
