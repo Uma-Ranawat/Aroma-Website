@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2017 at 12:08 PM
+-- Generation Time: Oct 17, 2017 at 10:46 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -163,15 +163,16 @@ CREATE TABLE `user` (
   `UserType` int(11) NOT NULL DEFAULT '2',
   `MobileNumber` varchar(14) DEFAULT NULL,
   `Address` varchar(100) DEFAULT NULL,
-  `Pincode` varchar(6) DEFAULT NULL
+  `Pincode` varchar(6) DEFAULT NULL,
+  `code` varchar(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Password`, `Email`, `UserType`, `MobileNumber`, `Address`, `Pincode`) VALUES
-(1, 'Uma', 'Ranawat', '835606357c7c0d9157bb989121f79eab', 'umaranawat@yahoo.com', 2, NULL, NULL, NULL);
+INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Password`, `Email`, `UserType`, `MobileNumber`, `Address`, `Pincode`, `code`) VALUES
+(1, 'Uma', 'Ranawat', '835606357c7c0d9157bb989121f79eab', 'umaranawat@yahoo.com', 2, NULL, NULL, NULL, '587598972');
 
 --
 -- Indexes for dumped tables
