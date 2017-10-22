@@ -32,9 +32,9 @@ error_reporting(E_ERROR | E_PARSE);
         <div class="navbar-fixed" >
             <nav>
             <div class="nav-wrapper">
-                <a href="Home.php" id="brandLogo" class="brand-logo animated pulse hide-on-med-and-down" >Aroma Creations</a>
-                <a href="Home.php" id="brandLogo" class="brand-logo hide-on-large-only" >Aroma Creations</a>    <!--style="font-size: 2.3em"-->
-              <a href="#" data-activates="mobile-demo" class="button-collapse" ><i class="material-icons">menu</i></a>
+                <a href="Home.php" id="brandLogo" class="brand-logo animated pulse hide-on-med-and-down" style="font-size: 200%;">Aroma Creations</a>
+                <a href="Home.php" id="brandLogo" class="brand-logo hide-on-large-only" style="font-size: 180%;" >Aroma Creations</a>    <!--style="font-size: 2.3em"-->
+                <a href="#" data-activates="mobile-demo" class="button-collapse" style="margin-left: 0px" ><i class="material-icons">menu</i></a>
               <!--<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>-->
               
               
@@ -66,7 +66,7 @@ error_reporting(E_ERROR | E_PARSE);
                           <li class='divider'></li>
                           <li><a href='orders.php' class='blue-text' style='font-size: larger'>Orders<i class="material-icons">class</i></a></li>
                           <li class='divider'></li>
-                          <li><a href='logout.php' class='blue-text' style='font-size: larger'>Log out<i class="material-icons">exit_to_app</i></a></li>
+                          <li><a href='./logic.php?value=logout' class='blue-text' style='font-size: larger'>Logout<i class="material-icons">exit_to_app</i></a></li>
                         </ul>
               
               <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -97,16 +97,16 @@ error_reporting(E_ERROR | E_PARSE);
         </nav>
     </div>
         
-        <ul class="side-nav" id="mobile-demo">
-                <li><a class="waves-effect blue-text" href="Home.php" style="font-size: larger"><i class="material-icons">home</i>Home</a></li>
+        <ul class="side-nav" id="mobile-demo" style="width: 65%;padding-left: 0%">
+            <li><a class="waves-effect blue-text" href="Home.php" style="font-size: 120%"><i class="material-icons">home</i>Home</a></li>
                 <li><div class="divider"></div></li>
-                <li><a class="waves-effect blue-text" href="signup.php" style="font-size: larger"><i class="material-icons">input</i>Sign Up</a></li>
+                <li><a class="waves-effect blue-text" href="signup.php" style="font-size: 120%"><i class="material-icons">input</i>Sign Up</a></li>
                 <li><div class="divider"></div></li>
-                <li><a class="waves-effect modal-trigger blue-text" href="#login" style="font-size: larger"><i class="material-icons">publish</i>Login</a></li>
+                <li><a class="waves-effect modal-trigger blue-text" href="#login" style="font-size: 120%"><i class="material-icons">publish</i>Login</a></li>
                 <li><div class="divider"></div></li>
-                <li><a class="waves-effect blue-text" href="about.php" style="font-size: larger"><i class="material-icons">info</i>About Us</a></li>
+                <li><a class="waves-effect blue-text" href="about.php" style="font-size: 120%"><i class="material-icons">info</i>About Us</a></li>
                 <li><div class="divider"></div></li>
-                <li><a class="waves-effect blue-text" href="contact.php" style="font-size: larger"><i class="material-icons">phone</i>Contact</a></li>
+                <li><a class="waves-effect blue-text" href="contact.php" style="font-size: 120%"><i class="material-icons">phone</i>Contact</a></li>
                 <li><div class="divider"></div></li>
                 
               </ul>
@@ -222,7 +222,7 @@ error_reporting(E_ERROR | E_PARSE);
                         {
                             Materialize.toast("Welcome Admin!!", 2000);
                             setTimeout(function() {
-                                    window.location = "./Admin_panel/Panel.php"; //link ur url or if possible do in logic only ok ?
+                                    window.location = "./Admin/admin_nav.php"; //link ur url or if possible do in logic only ok ?
                                     },2000);
                             
                         } else if (response == "2")

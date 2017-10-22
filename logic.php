@@ -397,4 +397,44 @@ elseif ($_GET['value'] == 'verified') {
             echo "empty";
           }
 }
+elseif ($page == "profile") {
+    
+        $qry = mysqli_query($con, "select MobileNumber,Address,Pincode from user where UserID='".$_SESSION['UserID']."'");
+        $add = "--";
+        $mob="--";
+        $row = mysqli_fetch_array($qry);
+        
+        if (mysqli_affected_rows($con) > 0) {
+           
+                if($row['MobileNumber']!='')
+                {
+                    $mob = $row['MobileNumber'];
+                }
+                
+                if($row['Address']!=''){
+                    $add = $row['Address'];
+                }
+                
+                if($row['Pincode']!=''){
+                    $qry1 = mysqli_query($con, "select City,State from area where Pincode='".$row['Pincode']."'");
+                    $row1 = mysqli_fetch_array($qry1);
+                    if (mysqli_affected_rows($con) > 0) {
+
+                        if($row['Pincode']!=''||$row1['City']!=''||$row1['State']!='')
+                        {
+                            $add .= " ".$row1['City']." ".$row1['State']." ".$row['Pincode'];
+                        }
+
+                    }
+                }
+        }
+        echo $mob."||".$add;
+        //........end..........
+}
+elseif ($_GET['value'] == 'logout') {
+    session_start();
+    session_unset();
+    session_destroy();
+    header("Location:./Home.php");
+}
 ?>

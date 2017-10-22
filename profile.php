@@ -4,7 +4,6 @@ session_start();
 if (!isset($_SESSION['UserID'])) {
     header("Location: ./Home.php");
 } else {
-    
     include './connection.php';
     ?>
 <!DOCTYPE html>
@@ -23,7 +22,7 @@ and open the template in the editor.
         <title>Profile</title>
         
         <style type="text/css">
-            .main
+/*            .main
             {
                 width: 100%;
                 height: auto;
@@ -33,44 +32,76 @@ and open the template in the editor.
                 padding-top: 7%;
                 padding-bottom: 7%;
                 margin: 0px;
-            }
+            }*/
             .cont
             {
-                width: 80%;
+                width: 90%;
                 height: auto;
-                margin-left: 10%;
-                margin-right: 10%;
+                margin: 5%;
+                margin-bottom: 2%;
                 background-color: white;
                 opacity: 0.9;
                 padding: 3%;
             }
         </style>
     </head>
-    <body>
+    <body onload="getData()">
         <?php
         // put your code here
         include './header.php';
         ?>
-        <div class="main">
+        
             <div class="cont z-depth-5 hoverable">
-               <div class="col s12">
-                    <h3 class="indigo-text darken-3 center-align"><b>Welcome, <?php echo $_SESSION['FirstName'];?></b></h3>
+                <div class="col s12" style="padding-left: 3%">
+                    <h5 class="indigo-text darken-3"><b>Primary Information</b></h5>
                     <div class="divider"></div>
                     <br>
+                    <h5 style="font-size: 110%">First Name : <b style="margin-left: 7%"><?php echo $_SESSION['FirstName'];?></b></h5><br>
+                    <h5 style="font-size: 110%">Last Name :  <b style="margin-left: 7%"><?php echo $_SESSION['LastName'];?></b></h5><br>
+                    <h5 style="font-size: 110%">Email ID : <b style="margin-left: 8%"><?php echo $_SESSION['Email'];?></b></h5><br>
+                    <h5 style="font-size: 110%">Mobile No : <b id="mobile" style="margin-left: 7%"></b></h5><br>
+                    <h5 style="font-size: 110%">Address : <b id="address" style="margin-left: 8%"></b></h5><br>
+                    
+                    <div class="row">
+                            <center>
+                                <button class="waves-effect waves-light indigo darken-4 btn " id='editProfile' onclick="" type="button" style="font-size: 120%">Edit Profile
+                                </button>
+                            </center>
+                        </div>
                 </div>
-               
-            
-            
-            
-            
-            
+                
+                
             </div>   <!--contain div tag ended-->
             
-        </div>    <!--main div tag ended-->
         <?php
         // put your code here
         include './footer.php';
         ?>
+            
+        <script type="text/javascript">
+            function getData()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                  xmlhttp.open("POST", "logic.php", true);
+
+                  //Send the proper header information along with the request
+                      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                  xmlhttp.onreadystatechange = function ()
+                  {
+                      if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                      {
+                          var m = document.getElementById("mobile");
+                          var a = document.getElementById("address");
+                         var response = xmlhttp.responseText.split("||");
+                            m.innerHTML = response[0];
+                            a.innerHTML = response[1];
+                      }
+                      //$(".main_disp").html(jsonResponse);
+                  }
+                  xmlhttp.send("page=profile");
+            }
+        </script>
     </body>
 </html>
 <?php } ?>
